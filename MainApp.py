@@ -71,5 +71,4 @@ def massa():
 
 # <------------ Основной алгоритм программы -------------->
 
-flight_assigment = get_new_flight_assigment()
 
