@@ -54,7 +54,6 @@ def len_new_population_G(g1, g2, K):
 
 def coeficent_K(T, Oxi):
     p = 3.14
-    print(not p)
     d = np.sin((-p / 2) + (p * (T + 0.5 * Oxi) / 40))
     return d
 
