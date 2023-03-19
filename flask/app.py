@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 points = mainapp.get_new_flight_assigment()
 
-days = [i for i in range(1, 5)]
+days = [i for i in range(1, 8)]
 rem_res = [(0, 0)] * len(days)
 spent_res = [(0, 0)] * len(days)
 react = [(0, 0)] * len(days)
