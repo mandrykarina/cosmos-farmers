@@ -2,6 +2,7 @@ from requests import get
 from json import loads
 import numpy as np
 import sqlite3 as sql
+from random import randint
 
 
 # <------------------ Создание простой Базы данных --------------->
@@ -70,8 +71,6 @@ def count_SH():
         otv+=i['points'][0]["SH"]
     return otv
 
-count_SH()
-
 
 #количество единиц sh выгружаемых в точке
 def shintochka(n):
@@ -79,5 +78,11 @@ def shintochka(n):
 
 
 # <------------ Основной алгоритм программы -------------->
+
+for i in range(len(get_new_flight_assigment())):
+    cursor.execute(f"""INSERT INTO info(number_id, count_day, remain_resources, now_resource, power_reactor, len_population, autotoclava) 
+            VALUES({i}, {10*i}, {0}, , {0}, {randint(1, 10+1)/10}, {count_SH()-get_new_flight_assigment()['points'][0]["SH"]}, "{randint(0, 30), 60*count_SH()}, ");
+        """)
+    db.commit()
 
 
