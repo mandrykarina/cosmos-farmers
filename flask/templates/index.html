@@ -8,7 +8,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/style.css"/>
-    <title>Расчет</title>
+    <title>{{title}}</title>
 </head>
 <body>
 <header>
@@ -23,15 +23,42 @@
 
     </div>
     <div class="info">
-        <div class="info-column">
-            {% for i in range(1, 6) %}
+        <div class="info-column" style="height: calc(100px * {{ length }});">
+            <b>День</b>
+            {% for i in days %}
                 <div class="info-cell">{{ i }}</div>
             {% endfor %}
         </div>
-        <div class="info-column"></div>
-        <div class="info-column"></div>
-        <div class="info-column"></div>
-        <div class="info-column"></div>
+        <div class="info-column" style="height: calc(100px * {{ length }});">
+            <b>Расходуемые ресурсы</b>
+            {% for i, j in spent_res %}
+                <div class="info-cell">{{ i }} ед. кислорода, {{ j }} ед. ядерного топлива</div>
+            {% endfor %}
+        </div>
+        <div class="info-column" style="height: calc(100px * {{ length }});">
+            <b>Оставшиеся ресурсы</b>
+            {% for i, j in rem_res %}
+                <div class="info-cell">{{ i }} ед. кислорода, {{ j }} ед. ядерного топлива</div>
+            {% endfor %}
+        </div>
+        <div class="info-column" style="height: calc(100px * {{ length }});">
+            <b>Распределение мощности реактора</b>
+            {% for i, j in react %}
+                <div class="info-cell">{{ i }}% на двигатель, {{ j }}% на выработку электроэнергии</div>
+            {% endfor %}
+        </div>
+        <div class="info-column" style="height: calc(100px * {{ length }});">
+            <b>Характеристики автоклава</b>
+            {% for i, j in auto %}
+                <div class="info-cell">Температура {{ i }} градусов, {{ j }} ед. кислорода</div>
+            {% endfor %}
+        </div>
+        <div class="info-column" style="height: calc(100px * {{ length }});">
+            <b>Популяция SH</b>
+            {% for i in sh %}
+                <div class="info-cell">{{ i }}</div>
+            {% endfor %}
+        </div>
     </div>
     </div>
 </main>
