@@ -1,7 +1,24 @@
 from requests import get
 from json import loads
 import numpy as np
+import sqlite3 as sql
 
+
+# <------------------ Создание простой Базы данных --------------->
+db = sql.connect("information.db")
+cursor = db.cursor()
+
+cursor.execute("""CREATE TABLE IF NOT EXISTS info(
+    number_id INTEGER,
+    count_day INTEGER,
+    remain_resources INTEGER,
+    now_resource INTEGER,
+    power_reactor FLOAT,
+    len_population INTEGER,
+    autoclava TEXT
+)
+""")
+db.commit()
 
 # <------------ Обьявление функций -------------->
 
@@ -20,18 +37,18 @@ def energy(T):
     return t
 
 
-def G(g1, g2, K):
+def len_new_population_G(g1, g2, K):
     return g1 + g2 * K
 
 
-def K(T, Oxi):
+def coeficent_K(T, Oxi):
     p = 3.14
     print(not p)
     d = np.sin((-p / 2) + (p * (T + 0.5 * Oxi) / 40))
     return d
 
 
-# <------------ ОСновной алгоритм программы -------------->
+# <------------ Основной алгоритм программы -------------->
 
 flight_assigment = get_new_flight_assigment()
 
