@@ -22,6 +22,15 @@ db.commit()
 
 # <------------ Обьявление функций -------------->
 
+# вычисление стоимости в кредитах
+class PriceInfo():
+    def __init__(self, count_oxygen, count_fuel):
+        # стоимость кислорода по количеству(должно быть четным!)
+        self.oxygen = 14*(count_oxygen//2)
+        # стоимость единиц топлива по количетву 
+        self.fuel = (14 * (10//2)) * count_fuel
+
+
 def get_new_flight_assigment(url="https://dt.miet.ru/ppo_it_final"):
     token = "46u76vrf"
     sait = get(url, headers={'X-Auth-Token': token})
