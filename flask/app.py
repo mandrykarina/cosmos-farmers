@@ -11,10 +11,6 @@ app = Flask(__name__)
 
 points = mainapp.get_new_flight_assigment()
 
-class FlightAssign(FlaskForm):
-    assign = StringField('Полетное задание', validators=[DataRequired()])
-    submit = SubmitField('Рассчитать')
-
 @app.route('/')
 def hello():
     return render_template('index.html')
