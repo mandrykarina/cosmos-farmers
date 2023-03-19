@@ -1,7 +1,7 @@
-import MainApp
+import flask.mainapp as mainapp
 
 def check_resalt(result, *args):
-    if MainApp.energy(args) == result:
+    if mainapp.energy(args) == result:
         return True
     return False
 

@@ -5,10 +5,11 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
+import mainapp
+
 app = Flask(__name__)
 
-r = requests.get("https://dt.miet.ru/ppo_it_final", headers={"X-Auth-Token": "46u76vrf"})
-points = r.json()
+points = mainapp.get_new_flight_assigment()
 
 class FlightAssign(FlaskForm):
     assign = StringField('Полетное задание', validators=[DataRequired()])
