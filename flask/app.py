@@ -1,8 +1,5 @@
 import os
 from flask import Flask, render_template
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
 import requests
 
 import mainapp
@@ -11,9 +8,18 @@ app = Flask(__name__)
 
 points = mainapp.get_new_flight_assigment()
 
+days = [i for i in range(1, 5)]
+rem_res = [(0, 0)] * len(days)
+spent_res = [(0, 0)] * len(days)
+react = [(0, 0)] * len(days)
+auto = [(0, 0)] * len(days)
+sh = [0] * len(days)
+money = 0
+
 @app.route('/')
 def hello():
-    return render_template('index.html')
+    return render_template('index.html', days=days, rem_res=rem_res, spent_res=spent_res,
+                           react=react, auto=auto, sh=sh, length=len(days), money=money)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
