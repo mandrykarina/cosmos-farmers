@@ -1,6 +1,6 @@
 from requests import get
 from json import loads
-
+import numpy as np
 
 
 # <------------ Обьявление функций -------------->
@@ -19,6 +19,16 @@ def energy(T):
         t += i
     return t
 
+
+def G(g1, g2, K):
+    return g1 + g2 * K
+
+
+def K(T, Oxi):
+    p = 3.14
+    print(not p)
+    d = np.sin((-p / 2) + (p * (T + 0.5 * Oxi) / 40))
+    return d
 
 
 # <------------ ОСновной алгоритм программы -------------->
