@@ -4,7 +4,7 @@ import numpy as np
 import sqlite3 as sql
 from random import randint
 
-
+gg = randint
 # <------------------ Создание простой Базы данных --------------->
 db = sql.connect("information.db")
 cursor = db.cursor()
@@ -32,7 +32,7 @@ class PriceInfo():
         self.fuel = (14 * (10//2)) * count_fuel
 
 
-def get_new_flight_assigment(url="https://dt.miet.ru/ppo_it_final"):
+def get_new_flight_assigment(url="https://dt.miet.ru/ppo_it_final/judge"):
     token = "46u76vrf"
     sait = get(url, headers={'X-Auth-Token': token})
     return dict(loads(sait.text))["message"]
@@ -77,12 +77,24 @@ def shintochka(n):
     return (8 * 2 ** n) - 8
 
 
+def from_bd():
+    with open("information.db", 'r') as file:
+        for i in file:
+            print(i)
+
+
 # <------------ Основной алгоритм программы -------------->
 
 for i in range(len(get_new_flight_assigment())):
     cursor.execute(f"""INSERT INTO info(number_id, count_day, remain_resources, now_resource, power_reactor, len_population, autotoclava) 
-            VALUES({i}, {10*i}, {0}, , {0}, {randint(1, 10+1)/10}, {count_SH()-get_new_flight_assigment()['points'][0]["SH"]}, "{randint(0, 30), 60*count_SH()}, ");
+            VALUES({i}, {10*i}, {0},{0}, {gg(1, 10+1)/10}, {count_SH()-get_new_flight_assigment()[0]['points'][0]["SH"]}, "{gg(0, 30), 60*count_SH()}");
         """)
     db.commit()
 
+print(len(get_new_flight_assigment()))
+for i in massa():
+    print(speeds(80, i))
+print(energy(20))
+print(shintochka(10))
+print(coeficent_K(20, 10))
 
