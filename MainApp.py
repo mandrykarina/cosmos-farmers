@@ -37,8 +37,8 @@ def get_new_flight_assigment(url="https://dt.miet.ru/ppo_it_final"):
     return dict(loads(sait.text))["message"]
 
 
-def speeds(V, w, m):
-    return V * (w/80) * (200/m)
+def speeds(w, m):
+    return 2 * (w/80) * (200/m)
 
 
 def energy(T):
