@@ -36,8 +36,10 @@ def get_new_flight_assigment(url="https://dt.miet.ru/ppo_it_final"):
     sait = get(url, headers={'X-Auth-Token': token})
     return dict(loads(sait.text))["message"]
 
+
 def speeds(V, w, m):
     return V * (w/80) * (200/m)
+
 
 def energy(T):
     t = 0
@@ -55,6 +57,16 @@ def coeficent_K(T, Oxi):
     print(not p)
     d = np.sin((-p / 2) + (p * (T + 0.5 * Oxi) / 40))
     return d
+
+
+def massa():
+    m = []
+    for i in range(len(get_new_flight_assigment())):
+        mm = 192
+        for ii in range(len(get_new_flight_assigment()[i]['points'])):
+            mm += get_new_flight_assigment()[i]['points'][ii]['SH']
+        m.append(mm)
+    return m
 
 
 # <------------ Основной алгоритм программы -------------->
