@@ -69,6 +69,11 @@ def massa():
     return m
 
 
+#количество единиц sh выгружаемых в точке
+def shintochka(n):
+    return (8 * 2 ** n) - 8
+
+
 # <------------ Основной алгоритм программы -------------->
 
 flight_assigment = get_new_flight_assigment()
