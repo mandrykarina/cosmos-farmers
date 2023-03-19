@@ -15,7 +15,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS info(
     now_resource INTEGER,
     power_reactor FLOAT,
     len_population INTEGER,
-    autoclava TEXT
+    autotoclava TEXT
 )
 """)
 db.commit()
@@ -42,10 +42,7 @@ def speeds(w, m):
 
 
 def energy(T):
-    t = 0
-    for i in range(0, T + 1):
-        t += i
-    return t
+    return sum([i for i in range(0, T+1)])
 
 
 def len_new_population_G(g1, g2, K):
@@ -53,8 +50,7 @@ def len_new_population_G(g1, g2, K):
 
 
 def coeficent_K(T, Oxi):
-    p = 3.14
-    print(not p)
+    p = np.pi
     d = np.sin((-p / 2) + (p * (T + 0.5 * Oxi) / 40))
     return d
 
@@ -67,6 +63,14 @@ def massa():
             mm += get_new_flight_assigment()[i]['points'][ii]['SH']
         m.append(mm)
     return m
+
+def count_SH():
+    otv=8
+    for i in get_new_flight_assigment():
+        otv+=i['points'][0]["SH"]
+    return otv
+
+count_SH()
 
 
 #количество единиц sh выгружаемых в точке

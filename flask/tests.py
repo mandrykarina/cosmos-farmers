@@ -17,10 +17,16 @@ def check_connect():
         return "The test is Completed!"
     return "Test Failed!"
 
+def check_K(result, *args):
+    if round(mainapp.coeficent_K(*args), 1)==result:
+        return "The test is Completed!"
+    return "Test Failed!"
+
 # проверка функция массы, для стандартных значений вернет 
-print("\n")
+print()
 print(check_mass([696, 5800, 199]))
 print(check_energy(36, 8))
 print(check_connect())
-print("\n")
+print(check_K(-0.5, 8, 10))
+print()
 
